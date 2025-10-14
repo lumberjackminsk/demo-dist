@@ -1,0 +1,45 @@
+backend:
+  name: github
+  repo: lumberjackminsk/astro-decap
+  preview_context: my-provider/deployment
+media_folder: "src/assets/images" # Location where files will be stored in the repo
+public_folder: "src/assets/images" # The src attribute for uploaded media
+i18n:
+  structure: multiple_folders
+  locales: [en, de, fr]
+  default_locale: en
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "src/content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields for each document, usually in frontmatter
+
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image",required: false }
+      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: posts
+    label: Posts
+    folder: "src/content/posts"
+    create: true
+    i18n: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        i18n: true
+        requared: false
+      - label: Date
+        name: date
+        widget: datetime
+        i18n: duplicate
+        requared: false
+      - label: Body
+        name: body
+        widget: markdown
+        i18n: true
+        requared: false
+
